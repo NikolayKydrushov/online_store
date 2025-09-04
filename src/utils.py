@@ -3,7 +3,7 @@ import os
 
 from dotenv import load_dotenv
 
-from src.main import Category, Product
+from src.classes import Category, Product
 
 load_dotenv("../.env")
 
@@ -11,20 +11,29 @@ PATH_FILE = os.getenv("PATH_FILE")
 # PATH_FILE = 'C:/Skypro/online_store/data/products.json'
 
 
-def reader_products(file_path: str) -> list:
+def reader_products(file_path: str) -> dict:
+    """
+    Функция чтения json файла products, создание на основе списка объектов.
+    Комплектация этих объектов в словарь типа {категория:[продукт1, продукт2]}.
 
+    Args:
+        file_path: Путь к файлу
+
+    Returns:
+        Возвращает словарь categories из объектов, созданных на основе данных из json файла products.
+    """
     try:
         with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
             # return data
     except json.JSONDecodeError:
-        return []
+        return {}
     except FileNotFoundError:
-        return []
+        return {}
     except TypeError:
-        return []
+        return {}
     except ValueError:
-        return []
+        return {}
 
     category_1 = Category(data[0]["name"], data[0]["description"], data[0]["products"])
 

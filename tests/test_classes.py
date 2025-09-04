@@ -1,5 +1,5 @@
-from tests.conftest_main import (category_empty, category_init, product_empty,
-                                 product_init)
+from tests.conftest_classes import (category_empty, category_init, product_empty,
+                                    product_init)
 
 # Тесты для класса Category
 
