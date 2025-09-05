@@ -19,13 +19,12 @@ class Category:
     number_categories = 0  # количество категорий
     numbers_products = 0  # количество товаров
 
-    def __init__(self, name, description, products):
+    def __init__(self, name, description, products=None):
         self.name = name
         self.description = description
-        self.products = products
-        Category.numbers_products = len(self.products)
-        if Category.numbers_products != 0:
-            Category.number_categories += 1
+        self.products = products if products is not None else []
+        Category.numbers_products += len(self.products)
+        Category.number_categories += 1
 
 
 # prod_1 = Product("", "", 0, 0)
