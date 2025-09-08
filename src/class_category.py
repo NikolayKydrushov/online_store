@@ -1,3 +1,6 @@
+from src.class_product import Product
+
+
 class Category:
     name: str  # название
     description: str  # описание
@@ -15,8 +18,11 @@ class Category:
 
     # метод добавления нового продукта
     def add_product(self, product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     # геттер для вывода списка товаров
     @property
