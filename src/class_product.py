@@ -10,6 +10,14 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    # метод вывода информации о продукте
+    def __str__(self):
+        return f"{self.name}, {self.price:.2f} руб., остаток: {self.quantity} шт."
+
+    # метод подсчета суммарной стоимости передаваемых товаров
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
     # класс-метод принимающий на вход параметры товара в словаре и возвращать созданный объект Product
     @classmethod
     def new_product(clc, prod):

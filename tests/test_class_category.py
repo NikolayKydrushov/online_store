@@ -1,6 +1,6 @@
 from src.class_category import Category
-from src.class_product import Product
 from tests.conftest_class_category import category_empty, category_init
+from tests.conftest_class_product import product_init, product_new
 
 # Тесты для класса Category
 
@@ -27,12 +27,33 @@ def test_init_category(category_init):
 
 
 # Тест №3 добавление новых продуктов в категории
-def test_add_product():
+def test_add_product(product_init, product_new):
     category = Category("Смартфоны", "Смартфоны - средство коммуникации")
-    product = Product(
-        "Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
-    )
-    category.add_product(product)
+
+    category.add_product(product_init)
     assert Category.product_count == 1  # Один товар добавлен
     assert len(category._Category__products) == 1  # Один элемент в списке товаров
-    assert Category.category_count == 3  # Категорий одна
+    assert Category.category_count == 3  # Кол-во категорий
+
+    category.add_product(product_new)
+    assert Category.product_count == 2  # Товар добавлен
+    assert len(category._Category__products) == 2  # Один элемент в списке товаров
+    assert Category.category_count == 3  # Кол-во категорий
+
+
+# Тест №4 работа метода str
+def test_str_category(product_init, product_new):
+    category = Category(
+        "Смартфоны", "Смартфоны - средство коммуникации", [product_init, product_new]
+    )
+    assert str(category) == "Смартфоны, количество продуктов: 16 шт."
+
+    # тест при добавлении новых товаров
+    category.add_product(product_new)
+    assert str(category) == "Смартфоны, количество продуктов: 30 шт."
+
+
+# Тест №5 работа метода str без передачи товаров
+def test_empty_str_category(product_init, product_new):
+    category = Category("Нет категории", "")
+    assert str(category) == "Нет категории, количество продуктов: 0 шт."
