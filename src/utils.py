@@ -3,7 +3,8 @@ import os
 
 from dotenv import load_dotenv
 
-from src.classes import Category, Product
+from src.class_category import Category
+from src.class_product import Product
 
 load_dotenv("../.env")
 
