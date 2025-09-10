@@ -1,6 +1,7 @@
 from src.class_category import Category
-from tests.conftest_class_category import category_empty, category_init
-from tests.conftest_class_product import product_init, product_new
+from tests.conftest.conftest_class_category import (category_empty,
+                                                    category_init)
+from tests.conftest.conftest_class_product import product_init, product_new
 
 # Тесты для класса Category
 

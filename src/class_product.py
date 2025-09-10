@@ -16,7 +16,10 @@ class Product:
 
     # метод подсчета суммарной стоимости передаваемых товаров
     def __add__(self, other):
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        if type(self) == type(other):
+            return (self.__price * self.quantity) + (other.__price * other.quantity)
+        else:
+            return TypeError
 
     # класс-метод принимающий на вход параметры товара в словаре и возвращать созданный объект Product
     @classmethod
