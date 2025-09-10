@@ -14,7 +14,7 @@ class Product:
     def __str__(self):
         return f"{self.name}, {self.price:.2f} руб., остаток: {self.quantity} шт."
 
-    # метод подсчета суммарной стоимости передаваемых товаров
+     # метод подсчета суммарной стоимости передаваемых товаров
     def __add__(self, other):
         if type(self) == type(other):
             return (self.__price * self.quantity) + (other.__price * other.quantity)

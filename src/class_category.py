@@ -28,8 +28,9 @@ class Category:
     # метод добавления нового продукта
     def add_product(self, product):
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            if issubclass(type(product), Product):
+                self.__products.append(product)
+                Category.product_count += 1
         else:
             raise TypeError
 
