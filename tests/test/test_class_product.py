@@ -1,5 +1,5 @@
-from tests.conftest_class_product import (product_empty, product_init,
-                                          product_new)
+from tests.conftest.conftest_class_product import (product_empty, product_init,
+                                                   product_new)
 
 # Тесты для класса Product
 
@@ -39,3 +39,25 @@ def test_price_setter(product_new):
         pass  # Никаких исключений возникать не должно, так как сработает warning
     finally:
         assert product_new.price == 30000  # Цена осталась неизменной
+
+
+# Тест №5 работа метода str
+def test_str_product(product_init, product_empty):
+    assert (
+        str(product_init) == "Samsung Galaxy C23 Ultra, 10000.50 руб., остаток: 2 шт."
+    )
+    assert str(product_empty) == ", 0.00 руб., остаток: 0 шт."
+
+
+# Тест №6 работа метода add с двумя продуктами
+def test_add_product(product_init, product_new):
+    expected_total_cost = (10000.5 * 2) + (31000.0 * 14)
+    actual_total_cost = product_init + product_new
+    assert actual_total_cost == expected_total_cost
+
+
+# Тест №7 работа метода add с одним продуктов
+def test_one_add_product(product_init):
+    expected_total_cost = 10000.5 * 2
+    actual_total_cost = product_init.price * product_init.quantity
+    assert actual_total_cost == expected_total_cost
