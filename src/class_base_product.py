@@ -56,7 +56,7 @@ class MixinPrint:
         self.description = description
         self.price = price
         self.quantity = quantity
-        # print(f"{self.__class__.__name__} ({name}, {description}, {price}, {quantity})")
+        print(f"{self.__class__.__name__} ({name}, {description}, {price}, {quantity})")
         super().__init__(name, description, price, quantity)
 
     def get_creation_message(self):
