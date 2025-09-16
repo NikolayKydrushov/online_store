@@ -69,6 +69,6 @@ def test_one_add_product(product_init):
 
 # Тест №8 работа миксина вывода информации об объекте
 def test_mixin_print(product_init):
-    creation_message = product_init.get_creation_message()
+    creation_message = product_init.__repr__()
     expected_output = "Product (Samsung Galaxy C23 Ultra, 256GB, Серый цвет, 200MP камера, 10000.5, 2)"
     assert creation_message == expected_output

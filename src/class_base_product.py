@@ -48,16 +48,26 @@ class BaseProduct(ABC):
         pass
 
 
+# class MixinPrint:
+#     """Миксин для вывода сообщений о создании объекта"""
+#
+#     def __init__(self, name, description, price, quantity):
+#         MixinPrint.__repr__(self)
+#         super().__init__(name, description, price, quantity)
+#
+#     def __repr__(self):
+#         return f"{self.__class__.__name__} ({self.name}, {self.description}, {self.price}, {self.quantity})"
+
+
 class MixinPrint:
     """Миксин для вывода сообщений о создании объекта"""
+    name: str
+    description: str
+    price: float
+    quantity: int
 
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.quantity = quantity
-        print(f"{self.__class__.__name__} ({name}, {description}, {price}, {quantity})")
-        super().__init__(name, description, price, quantity)
+    def __init__(self) -> None:
+        print(repr(self))
 
-    def get_creation_message(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__} ({self.name}, {self.description}, {self.price}, {self.quantity})"
