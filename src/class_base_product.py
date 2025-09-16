@@ -47,18 +47,6 @@ class BaseProduct(ABC):
         """Метод для установки новой цены"""
         pass
 
-
-# class MixinPrint:
-#     """Миксин для вывода сообщений о создании объекта"""
-#
-#     def __init__(self, name, description, price, quantity):
-#         MixinPrint.__repr__(self)
-#         super().__init__(name, description, price, quantity)
-#
-#     def __repr__(self):
-#         return f"{self.__class__.__name__} ({self.name}, {self.description}, {self.price}, {self.quantity})"
-
-
 class MixinPrint:
     """Миксин для вывода сообщений о создании объекта"""
     name: str
