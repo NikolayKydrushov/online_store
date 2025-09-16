@@ -64,6 +64,7 @@ price
 price
 ```
 
+
 ### 3. Модуль class_smartphone
 3.1 Создание класса Smartphone, дочерний класс Product
 ```
@@ -84,3 +85,47 @@ __init__
 reader_products(file_path)
 ```
  
+
+### 6. Модуль class_base_product
+6.1 Создание абстрактного класса BaseProduct родительский класс для класса Product
+```
+@abstractmethod
+__init__
+```
+6.2 Метод вывода в формате "имя, цена руб., остаток: кол-во шт."
+```
+@abstractmethod
+__str__
+```
+6.3 Метод подсчета суммарной стоимости передаваемых товаров
+```
+@abstractmethod
+__add__
+```
+6.4 Класс-метод принимающий на вход параметры товара в словаре и возвращать созданный объект Product
+```
+@classmethod
+@abstractmethod
+new_product
+```
+6.5 Геттер для цены
+```
+@property
+@abstractmethod
+price
+```
+6.6 Сеттер для проверки корректности цены
+```
+@property.setter
+@abstractmethod
+price
+```
+
+6.7 Создание миксина MixinPrint, для вывода информации об объекте для класса Product
+```
+__init__
+```
+
+```
+get_creation_message
+```
