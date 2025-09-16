@@ -1,17 +1,22 @@
 from src.class_base_product import BaseProduct, MixinPrint
 
 class Product(BaseProduct, MixinPrint):
-    name: str  # название
-    description: str  # описание
-    __price: float  # цена
-    quantity: int  # количество в наличии
+    # __slots__ = ('name', 'description', 'price', 'quantity')
+
+    # name: str  # название
+    # description: str  # описание
+    # __price: float  # цена
+    # quantity: int  # количество в наличии
 
     def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
-        super().__init__()
+        super().__init__(name, description, price, quantity)
+        # self.name = name
+        # self.description = description
+        # self.__price = price
+        # self._MixinPrint__price = self.__price
+        # self.quantity = quantity
+        # super().__init__()
+        # print(repr(self))
 
     # метод вывода информации о продукте
     def __str__(self):
@@ -20,7 +25,7 @@ class Product(BaseProduct, MixinPrint):
      # метод подсчета суммарной стоимости передаваемых товаров
     def __add__(self, other):
         if type(self) == type(other):
-            return (self.__price * self.quantity) + (other.__price * other.quantity)
+            return (self.price * self.quantity) + (other.price * other.quantity)
         else:
             return TypeError
 
@@ -32,7 +37,7 @@ class Product(BaseProduct, MixinPrint):
     # геттер для цены
     @property
     def price(self):
-        return self.__price
+        return self._BaseProduct__price
 
     # сеттер для проверки корректности цены
     @price.setter
@@ -40,4 +45,4 @@ class Product(BaseProduct, MixinPrint):
         if value <= 0:
             print("Цена не должна быть нулевая или отрицательная")
         else:
-            self.__price = value
+            self._BaseProduct__price = value

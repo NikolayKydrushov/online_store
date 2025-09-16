@@ -1,0 +1,24 @@
+[project]
+name = "package-name"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Nikolay Kydrushov",email = "nnikolay2909@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-dotenv (>=1.1.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "package_name", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.2"
+pytest-cov = "^6.2.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
