@@ -1,0 +1,63 @@
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+
+    def __init__(self, name, description, price, quantity):
+        """
+        Конструктор для базового класса продуктов.
+
+        name: название
+        description: описание
+        quantity: количество в наличии
+        """
+        self.name = name
+        self.description = description
+        self._BaseProduct__price = price
+        self.quantity = quantity
+
+    @abstractmethod
+    def __str__(self):
+        """Метод вывода информации о продукте"""
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        """Метод подсчета суммарной стоимости передаваемых товаров"""
+        pass
+
+    # класс-метод принимающий на вход параметры товара в словаре и возвращать созданный объект Product
+    @classmethod
+    @abstractmethod
+    def new_product(clc, args, **kwargs):
+        """Метод создания нового объекта продукта из словаря"""
+        pass
+
+    # геттер для цены
+    @property
+    @abstractmethod
+    def price(self):
+        """Метод возвращает цену продукта"""
+        pass
+
+    # сеттер для проверки корректности цены
+    @price.setter
+    @abstractmethod
+    def price(self, value):
+        """Метод для установки новой цены"""
+        pass
+
+
+class MixinPrint:
+    """Миксин для вывода сообщений о создании объекта"""
+
+    def __init__(self, name, description, price, quantity):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
+        # print(f"{self.__class__.__name__} ({name}, {description}, {price}, {quantity})")
+        super().__init__(name, description, price, quantity)
+
+    def get_creation_message(self):
+        return f"{self.__class__.__name__} ({self.name}, {self.description}, {self.price}, {self.quantity})"
