@@ -1,6 +1,9 @@
 from src.class_product import Product
-from tests.conftest.conftest_class_product import (product_empty, product_init,
-                                                   product_new)
+from tests.conftest.conftest_class_product import (
+    product_empty,
+    product_init,
+    product_new,
+)
 
 # Тесты для класса Product
 

@@ -19,6 +19,12 @@ packages = [{include = "package_name", from = "src"}]
 pytest = "^8.4.2"
 pytest-cov = "^6.2.1"
 
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.3.0"
+black = "^25.1.0"
+isort = "^6.0.1"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"

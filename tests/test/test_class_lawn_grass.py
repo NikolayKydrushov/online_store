@@ -1,6 +1,8 @@
-from tests.conftest.conftest_class_lawn_grass import (lawn_grass_empty,
-                                                      lawn_grass_init,
-                                                      lawn_grass_new)
+from tests.conftest.conftest_class_lawn_grass import (
+    lawn_grass_empty,
+    lawn_grass_init,
+    lawn_grass_new,
+)
 
 # Тесты для класса LawnGrass
 

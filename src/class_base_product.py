@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseProduct(ABC):
 
     def __init__(self, name, description, price, quantity):
@@ -48,7 +49,6 @@ class BaseProduct(ABC):
 
 
 class MixinPrint:
-
     """Миксин для вывода сообщений о создании объекта"""
 
     def __init__(self, name, description, price, quantity):
