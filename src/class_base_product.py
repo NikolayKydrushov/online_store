@@ -11,10 +11,11 @@ class BaseProduct(ABC):
         description: описание
         quantity: количество в наличии
         """
-        self.name = name
-        self.description = description
-        self._BaseProduct__price = price
-        self.quantity = quantity
+        # self.name = name
+        # self.description = description
+        # self._BaseProduct__price = price
+        # self.quantity = quantity
+        super().__init__(name, description, price, quantity)
 
     @abstractmethod
     def __str__(self):
@@ -54,7 +55,11 @@ class MixinPrint:
     price: float
     quantity: int
 
-    def __init__(self) -> None:
+    def __init__(self, name, description, price, quantity) -> None:
+        self.name = name
+        self.description = description
+        self._BaseProduct__price = price
+        self.quantity = quantity
         print(repr(self))
 
     def __repr__(self) -> str:
