@@ -4,18 +4,8 @@ from abc import ABC, abstractmethod
 class BaseProduct(ABC):
 
     def __init__(self, name, description, price, quantity):
-        """
-        Конструктор для базового класса продуктов.
-
-        name: название
-        description: описание
-        quantity: количество в наличии
-        """
-        # self.name = name
-        # self.description = description
-        # self._BaseProduct__price = price
-        # self.quantity = quantity
-        super().__init__(name, description, price, quantity)
+        """Конструктор для базового класса продуктов."""
+        pass
 
     @abstractmethod
     def __str__(self):
@@ -56,10 +46,6 @@ class MixinPrint:
     quantity: int
 
     def __init__(self, name, description, price, quantity) -> None:
-        self.name = name
-        self.description = description
-        self._BaseProduct__price = price
-        self.quantity = quantity
         print(repr(self))
 
     def __repr__(self) -> str:
