@@ -1,6 +1,8 @@
-from tests.conftest.conftest_class_smartphone import (smartphone_empty,
-                                                      smartphone_init,
-                                                      smartphone_new)
+from tests.conftest.conftest_class_smartphone import (
+    smartphone_empty,
+    smartphone_init,
+    smartphone_new,
+)
 
 # Тесты для класса Smartphone
 

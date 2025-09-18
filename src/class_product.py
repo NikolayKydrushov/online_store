@@ -1,4 +1,9 @@
-class Product:
+from src.class_base_product import BaseProduct, MixinPrint
+
+
+class Product(MixinPrint, BaseProduct):
+    # __slots__ = ('name', 'description', 'price', 'quantity')
+
     name: str  # название
     description: str  # описание
     __price: float  # цена
@@ -9,15 +14,16 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__(name, description, price, quantity)
 
     # метод вывода информации о продукте
     def __str__(self):
         return f"{self.name}, {self.price:.2f} руб., остаток: {self.quantity} шт."
 
-     # метод подсчета суммарной стоимости передаваемых товаров
+    # метод подсчета суммарной стоимости передаваемых товаров
     def __add__(self, other):
         if type(self) == type(other):
-            return (self.__price * self.quantity) + (other.__price * other.quantity)
+            return (self.price * self.quantity) + (other.price * other.quantity)
         else:
             return TypeError
 
