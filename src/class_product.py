@@ -1,7 +1,7 @@
 from src.class_base_product import BaseProduct, MixinPrint
 
 
-class Product(MixinPrint, BaseProduct):
+class Product(BaseProduct, MixinPrint):
     # __slots__ = ('name', 'description', 'price', 'quantity')
 
     name: str  # название
@@ -13,7 +13,12 @@ class Product(MixinPrint, BaseProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+
+        if quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
+
         super().__init__(name, description, price, quantity)
 
     # метод вывода информации о продукте
@@ -35,12 +40,14 @@ class Product(MixinPrint, BaseProduct):
     # геттер для цены
     @property
     def price(self):
+        if self.__price <= 0:
+            raise ValueError("Цена не может быть отрицательной")
         return self.__price
 
     # сеттер для проверки корректности цены
     @price.setter
     def price(self, value):
         if value <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
+            raise ValueError("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = value
