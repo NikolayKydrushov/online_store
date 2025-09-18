@@ -6,7 +6,7 @@ from src.class_product import Product
 # 1. Фикстура для пустого объекта класса Product
 @pytest.fixture()
 def product_empty():
-    return Product("", "", 0, 0)
+    return Product("", "", 1, 1)
 
 
 # 2. Фикстура для объекта класса Product

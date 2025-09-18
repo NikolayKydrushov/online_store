@@ -44,3 +44,29 @@ class Category:
                 f"{product.name}, {product.price:.2f} руб., остаток: {product.quantity} шт."
             )
         return "\n".join(result)
+
+
+    # метод подсчитывающий средний ценник всех товаров
+    def middle_price(self):
+        try:
+            if not self.__products:
+                # исключение в случаи отсутствия в категории нет товаров
+                raise CategoryWithoutProducts("В данном классе нет продуктов")
+
+            total_number_products = sum(i.quantity for i in self.__products)
+            total_price_products = sum(i.price for i in self.__products)
+
+            price_middle = total_price_products / total_number_products
+            return round(price_middle, 2)
+
+        except CategoryWithoutProducts:
+            return 0
+        # исключение в случаи деления на 0
+        except ZeroDivisionError:
+            return 0
+
+
+
+class CategoryWithoutProducts(Exception):
+    def __init__(self, *args, **kwargs):
+        self.message = args[0] if args else "В данном классе нет продуктов"

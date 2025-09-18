@@ -1,4 +1,6 @@
-from src.class_category import Category
+import pytest
+
+from src.class_category import Category, CategoryWithoutProducts
 from tests.conftest.conftest_class_category import category_empty, category_init
 from tests.conftest.conftest_class_product import product_init, product_new
 
@@ -27,18 +29,21 @@ def test_init_category(category_init):
 
 
 # Тест №3 добавление новых продуктов в категории
-def test_add_product(product_init, product_new):
+def test_add_product(product_init, product_new, category_init):
     category = Category("Смартфоны", "Смартфоны - средство коммуникации")
 
     category.add_product(product_init)
     assert Category.product_count == 1  # Один товар добавлен
     assert len(category._Category__products) == 1  # Один элемент в списке товаров
-    assert Category.category_count == 3  # Кол-во категорий
+    assert Category.category_count == 4  # Кол-во категорий
 
     category.add_product(product_new)
     assert Category.product_count == 2  # Товар добавлен
     assert len(category._Category__products) == 2  # Один элемент в списке товаров
-    assert Category.category_count == 3  # Кол-во категорий
+    assert Category.category_count == 4 # Кол-во категорий
+
+    with pytest.raises(TypeError):
+        category.add_product(category_init)
 
 
 # Тест №4 работа метода str
@@ -57,3 +62,10 @@ def test_str_category(product_init, product_new):
 def test_empty_str_category(product_init, product_new):
     category = Category("Нет категории", "")
     assert str(category) == "Нет категории, количество продуктов: 0 шт."
+
+
+def test_exception_on_empty_category():
+    cat = Category("Смартфоны",
+                   "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций",
+        [])
+    assert cat.middle_price() == 0
