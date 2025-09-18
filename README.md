@@ -33,6 +33,14 @@ add_product
 ```
 products
 ```
+1.4 Метод подсчитывающий средний ценник всех товаров
+```
+middle_price
+```
+1.5 Класс CategoryWithoutProducts для обработки исключения
+```
+__init__
+```
 
 
 ### 2. Модуль class_product
